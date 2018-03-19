@@ -22,6 +22,12 @@ RUN curl -L -o /tmp/memcached.tar.gz "https://github.com/php-memcached-dev/php-m
 
 RUN cd /usr/bin && curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && mv /usr/bin/wp-cli.phar /usr/bin/wp && chmod +x /usr/bin/wp
 
+RUN cd / && wget 'https://github.com/mesaque/dev-start-wp-kit/archive/master.zip' && unzip master.zip
+
+RUN cp /dev-start-wp-kit-master/miscellaneous/php/php-dev.ini /usr/local/etc/php/conf.d/php-dev.ini
+RUN cp /dev-start-wp-kit-master/miscellaneous/php/www-data.conf /usr/local/etc/php-fpm.d/www.conf
+RUN cp /dev-start-wp-kit-master/miscellaneous/php/zz-docker.conf /usr/local/etc/php-fpm.d/zz-docker.conf
+RUN cp /dev-start-wp-kit-master/miscellaneous/php/msmtprc /etc/msmtprc
 
 RUN touch /var/log/msmtp.log && chmod 777 /var/log/msmtp.log
 
