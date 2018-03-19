@@ -1,0 +1,32 @@
+version: "2"
+services:
+  disk:
+    container_name: disk
+    image: debian:jessie
+    volumes:
+      - /etc/nginx:/etc/nginx
+      - /var/log/nginx:/var/log/nginx
+      - /var/log/letsencrypt:/var/log/letsencrypt 
+      - /var/log/php-fpm:/var/log/php-fpm
+      - /var/log/nginx:/usr/local/openresty/nginx/logs
+      - /etc/letsencrypt:/etc/letsencrypt
+      - /var/run2:/var/run
+      - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
+      - /var/www:/var/www
+  php-fpm:
+    container_name: php
+    volumes_from:
+      - disk
+    build: 
+      context: ./Dockerfiles
+      dockerfile: dockerfile-php7
+  webserver:
+    container_name: webserver
+    volumes_from:
+      - disk
+    build: 
+      context: ./Dockerfiles
+      dockerfile: dockerfile-nginx-module-pagespeed
+    ports:
+      - "80:80"
+      - "443:443"
