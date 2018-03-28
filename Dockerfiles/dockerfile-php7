@@ -35,4 +35,3 @@ RUN docker-php-ext-install zip mysqli sockets soap simplexml calendar bcmath opc
 RUN deluser www-data && deluser xfs
 RUN echo "www-data:x:33:33:Apiki WP Host,,,:/var/www:/bin/false" >> /etc/passwd && echo "www-data:x:33:www-data" >> /etc/group
 WORKDIR /var/www
-USER www-data
