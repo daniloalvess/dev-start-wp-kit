@@ -31,3 +31,15 @@ services:
     ports:
       - "80:80"
       - "443:443"
+  mysql:
+    container_name: mysql
+    volumes_from:
+      - disk
+    build: 
+      context: ./Dockerfiles
+      dockerfile: dockerfile-mysql
+    volumes:
+      - /var/lib/mysql:/var/lib/mysql
+      - /var/log/mysql:/var/log/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
