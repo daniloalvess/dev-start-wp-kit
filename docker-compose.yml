@@ -5,6 +5,7 @@ services:
     image: debian:jessie
     volumes:
       - /etc/nginx:/etc/nginx
+      - /etc/nginx:/usr/local/openresty/nginx/conf
       - /var/log/nginx:/var/log/nginx
       - /var/log/letsencrypt:/var/log/letsencrypt 
       - /var/log/php-fpm:/var/log/php-fpm
