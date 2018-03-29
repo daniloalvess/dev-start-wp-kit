@@ -14,13 +14,22 @@ services:
       - /var/run2:/var/run
       - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
       - /var/www:/var/www
-  php-fpm:
-    container_name: php
+  php-fpm7:
+    container_name: php7
     volumes_from:
       - disk
     build: 
       context: ./Dockerfiles
       dockerfile: dockerfile-php7
+    links:
+      - "mysql:db"
+  php-fpm6:
+    container_name: php6
+    volumes_from:
+      - disk
+    build:
+      context: ./Dockerfiles
+      dockerfile: dockerfile-php6
     links:
       - "mysql:db"
   webserver:
