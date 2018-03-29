@@ -1,0 +1,11 @@
+FROM mysql:latest
+
+MAINTAINER Apiki Team Maintainers "mesaque.s.silva@gmail.com"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+RUN apt-get update && apt-get install -y wget unzip
+
+RUN cd / && wget 'https://github.com/mesaque/dev-start-wp-kit/archive/master.zip' && unzip master.zip
+
+RUN cp /dev-start-wp-kit-master/miscellaneous/mysql/my.cnf /etc/mysql/mysql.conf.d/mysqld.cnf

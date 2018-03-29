@@ -21,6 +21,8 @@ services:
     build: 
       context: ./Dockerfiles
       dockerfile: dockerfile-php7
+    links:
+      - "mysql:db"
   webserver:
     container_name: webserver
     volumes_from:
