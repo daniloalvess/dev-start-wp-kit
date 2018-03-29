@@ -1,0 +1,16 @@
+
+server {
+
+    listen 80 default_server;
+
+    server_name localhost _;
+    root /var/www/html;
+    
+
+    error_log /var/log/nginx/localhost.log warn;
+
+    index index.php index.html index.htm;
+
+    include vhosts/*.conf;
+    include common/php7.conf;      
+}
