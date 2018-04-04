@@ -3,7 +3,7 @@ MAINTAINER mesaque.s.silva@gmail.com
 
 RUN apk update && \
     apk upgrade && \
-    apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev curl-dev openssl-dev libmcrypt-dev libpq cyrus-sasl-dev libmemcached-dev msmtp pcre-dev zlib-dev git zip bash vim sudo bind-tools && \
+    apk add --no-cache freetype libpng libjpeg-turbo freetype-dev libpng-dev libjpeg-turbo-dev libxml2-dev curl-dev openssl-dev libmcrypt-dev libpq cyrus-sasl-dev libmemcached-dev msmtp pcre-dev zlib-dev git zip bash vim sudo bind-tools openssh && \
     docker-php-ext-configure gd \
     --with-gd \
     --with-freetype-dir=/usr/include/ \
