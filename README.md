@@ -6,7 +6,7 @@ GO to the root git cloned project and RUN the followin codes at your command lin
 
 //fix MySQL run
 ```
-chmod 777 /var/run2
+sudo mkdir  /var/run2 && sudo chmod 777 /var/run2
 ```
 //fix Nginx files
 ```
