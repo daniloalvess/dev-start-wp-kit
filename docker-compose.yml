@@ -14,6 +14,7 @@ services:
       - /var/run2:/var/run
       - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
       - /var/www:/var/www
+      - ${HOME}:${HOME}
   php-fpm7:
     container_name: php7
     volumes_from:
