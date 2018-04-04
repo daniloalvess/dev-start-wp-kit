@@ -1,7 +1,7 @@
 # dev-start-wp-kit
 
 
-GO to the root git cloned project and RUN the followin codes at your command line;
+First off all, go to the root git cloned project and RUN the following codes at your command line;
 
 
 //fix MySQL run
@@ -16,4 +16,10 @@ cp -rf nginx/* /etc/nginx/
 //PHPMyADMIN
 ```
 cp -rf miscellaneous/vhost/phpmyadmin /var/www
+```
+
+
+After tha run
+```
+docker-compose up
 ```
