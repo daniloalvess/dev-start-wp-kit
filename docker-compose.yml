@@ -18,6 +18,9 @@ services:
     container_name: php7
     volumes_from:
       - disk
+    volumes:
+      - /etc/passwd:/etc/passwd
+      - /etc/group:/etc/group
     build: 
       context: ./Dockerfiles
       dockerfile: dockerfile-php7
@@ -27,6 +30,9 @@ services:
     container_name: php6
     volumes_from:
       - disk
+    volumes:
+      - /etc/passwd:/etc/passwd
+      - /etc/group:/etc/group
     build:
       context: ./Dockerfiles
       dockerfile: dockerfile-php6
@@ -36,7 +42,7 @@ services:
     container_name: webserver
     volumes_from:
       - disk
-    build: 
+    build:
       context: ./Dockerfiles
       dockerfile: dockerfile-nginx-module-pagespeed
     ports:
@@ -46,7 +52,7 @@ services:
     container_name: mysql
     volumes_from:
       - disk
-    build: 
+    build:
       context: ./Dockerfiles
       dockerfile: dockerfile-mysql
     volumes:
@@ -54,3 +60,10 @@ services:
       - /var/log/mysql:/var/log/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
+  node:
+    container_name: node
+    volumes_from:
+      - disk
+    build:
+      context: ./Dockerfiles
+      dockerfile: dockerfile-node
