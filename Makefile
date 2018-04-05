@@ -3,7 +3,7 @@ build:
 	$(shell sudo ./MakeFunctions/user-create.sh)
 install:
 	$(shell ./MakeFunctions/docker-fix.sh)
-up:
+start:
 	@docker-compose up --detach
 stop:
 	@docker-compose stop
