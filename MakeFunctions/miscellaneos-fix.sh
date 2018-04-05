@@ -20,5 +20,5 @@
 }
 
 [ ! -d /etc/profile.d/apiki.sh ] && {
-	mv MakeFunctions/alias-apiki.sh /etc/profile.d/apiki.sh
+	cp MakeFunctions/alias-apiki.sh /etc/profile.d/apiki.sh
 }
