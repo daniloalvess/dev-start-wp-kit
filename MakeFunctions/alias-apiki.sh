@@ -9,7 +9,7 @@ php () {
 composer () {
    docker exec \
     -it \
-    --user (id -u):(id -g) \
+    --user $(id -u):$(id -g) \
     --env PWD=$PWD \
     php7 \
     bash \
@@ -19,7 +19,7 @@ composer () {
 phpcs () {
    docker exec \
     -it \
-    --user (id -u):(id -g) \
+    --user $(id -u):$(id -g) \
     --env PWD=$PWD \
     php7 \
     bash \
@@ -44,7 +44,7 @@ yarn () {
    docker run \
      -it \
      --rm \
-     --user (id -u):(id -g) \
+     --user $(id -u):$(id -g) \
      --env PWD=$PWD \
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
@@ -58,7 +58,7 @@ npm () {
    docker run \
      -it \
      --rm \
-     --user (id -u):(id -g) \
+     --user $(id -u):$(id -g) \
      --env PWD=$PWD \
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
