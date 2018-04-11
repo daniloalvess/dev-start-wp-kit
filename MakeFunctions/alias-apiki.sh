@@ -6,16 +6,6 @@ php () {
     -c "php $argv"
 }
 
-composer () {
-   docker exec \
-    -it \
-    --user $(id -u):$(id -g) \
-    --env PWD=$PWD \
-    php7 \
-    bash \
-    -c "cd $PWD && composer $argv" 
-}
-
 phpcs () {
    docker exec \
     -it \
