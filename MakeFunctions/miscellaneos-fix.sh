@@ -18,6 +18,10 @@
 [ ! -d /var/www/phpmyadmin ] && {
 	cp -rf miscellaneous/vhost/phpmyadmin /var/www
 }
+[ ! -d /var/www/wpcs ] && {
+	cp -rf miscellaneous/wpcs /var/www
+}
+
 
 [ ! -d /etc/profile.d/apiki.sh ] && {
 	cp MakeFunctions/alias-apiki.sh /etc/profile.d/apiki.sh
