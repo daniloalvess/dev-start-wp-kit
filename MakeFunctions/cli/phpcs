@@ -1,0 +1,3 @@
+#/bin/bash
+
+docker exec -i  --user $(id -u):$(id -g) --workdir $PWD  php7 phpcs $@

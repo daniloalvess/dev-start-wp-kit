@@ -1,21 +1,3 @@
-php () {
-  docker exec \
-    -i \
-    php7 \
-    bash \
-    -c "php $argv"
-}
-
-phpcs () {
-   docker exec \
-    -it \
-    --user $(id -u):$(id -g) \
-    --env PWD=$PWD \
-    php7 \
-    bash \
-    -c "cd $PWD && phpcs $argv" 
-}
-
 mysql () {
   docker exec \
     -it \
