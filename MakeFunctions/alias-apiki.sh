@@ -1,3 +1,5 @@
+#!/bin/bash
+
 mysql () {
   docker exec \
     -it \

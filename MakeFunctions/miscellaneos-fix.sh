@@ -22,3 +22,10 @@
 [ ! -d /etc/profile.d/apiki.sh ] && {
 	cp MakeFunctions/alias-apiki.sh /etc/profile.d/apiki.sh
 }
+
+
+for cli in $(ls MakeFunctions/cli)
+do
+	unlink /usr/bin/${cli} &> /dev/null
+	ln -s $PWD/MakeFunctions/cli/${cli} /usr/bin/${cli}
+done

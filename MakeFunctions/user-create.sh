@@ -12,7 +12,7 @@ getent passwd $WUSER &> /dev/null
 	exit 0
 }
 
-getent group 33 | grep www-data
+getent group 33  | grep www-data &> /dev/null
 [ $? != 0 ] && {
 	groupmod --new-name www-data tape
 }
