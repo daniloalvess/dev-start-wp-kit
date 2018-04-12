@@ -15,6 +15,9 @@ services:
       - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
       - /var/www:/var/www
       - ${HOME}:${HOME}
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.60
   php-fpm7:
     container_name: php7
     volumes_from:
@@ -25,8 +28,11 @@ services:
     build: 
       context: ./Dockerfiles
       dockerfile: dockerfile-php7
-    links:
-      - "mysql:db"
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.63
+    extra_hosts:
+      - "db:172.28.5.64"
   php-fpm6:
     container_name: php6
     volumes_from:
@@ -37,8 +43,11 @@ services:
     build:
       context: ./Dockerfiles
       dockerfile: dockerfile-php6
-    links:
-      - "mysql:db"
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.62
+    extra_hosts:
+      - "db:172.28.5.64"
   webserver:
     container_name: webserver
     volumes_from:
@@ -49,6 +58,9 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.61
   mysql:
     container_name: mysql
     volumes_from:
@@ -61,6 +73,9 @@ services:
       - /var/log/mysql:/var/log/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=root
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.64
   node:
     container_name: node
     volumes_from:
@@ -68,3 +83,15 @@ services:
     build:
       context: ./Dockerfiles
       dockerfile: dockerfile-node
+    networks:
+      devkit:
+          ipv4_address: 172.28.5.65
+networks:
+  devkit:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.28.0.0/16
