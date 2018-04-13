@@ -33,6 +33,7 @@ services:
           ipv4_address: 172.28.5.63
     extra_hosts:
       - "db:172.28.5.64"
+    env_file: .env
   php-fpm6:
     container_name: php6
     volumes_from:
@@ -48,6 +49,7 @@ services:
           ipv4_address: 172.28.5.62
     extra_hosts:
       - "db:172.28.5.64"
+    env_file: .env
   webserver:
     container_name: webserver
     volumes_from:
@@ -61,6 +63,7 @@ services:
     networks:
       devkit:
           ipv4_address: 172.28.5.61
+    env_file: .env
   mysql:
     container_name: mysql
     volumes_from:
@@ -76,6 +79,7 @@ services:
     networks:
       devkit:
           ipv4_address: 172.28.5.64
+    env_file: .env
   node:
     container_name: node
     volumes_from:
@@ -86,6 +90,7 @@ services:
     networks:
       devkit:
           ipv4_address: 172.28.5.65
+    env_file: .env
 networks:
   devkit:
     driver: bridge
