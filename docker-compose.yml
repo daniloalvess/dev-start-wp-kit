@@ -20,14 +20,12 @@ services:
           ipv4_address: 172.28.5.60
   php-fpm7:
     container_name: php7
+    image: mesaque/php7:1.0
     volumes_from:
       - disk
     volumes:
       - /etc/passwd:/etc/passwd
       - /etc/group:/etc/group
-    build: 
-      context: ./Dockerfiles
-      dockerfile: dockerfile-php7
     networks:
       devkit:
           ipv4_address: 172.28.5.63
@@ -36,14 +34,12 @@ services:
     env_file: .env
   php-fpm6:
     container_name: php6
+    image: mesaque/php6:1.0
     volumes_from:
       - disk
     volumes:
       - /etc/passwd:/etc/passwd
       - /etc/group:/etc/group
-    build:
-      context: ./Dockerfiles
-      dockerfile: dockerfile-php6
     networks:
       devkit:
           ipv4_address: 172.28.5.62
@@ -52,11 +48,9 @@ services:
     env_file: .env
   webserver:
     container_name: webserver
+    image: mesaque/webserver
     volumes_from:
       - disk
-    build:
-      context: ./Dockerfiles
-      dockerfile: dockerfile-nginx-module-pagespeed
     ports:
       - "80:80"
       - "443:443"
