@@ -1,6 +1,6 @@
 build:
-	$(shell sudo ./MakeFunctions/miscellaneos-fix.sh)
-	$(shell sudo ./MakeFunctions/user-create.sh)
+	$(shell sudo bash ./MakeFunctions/miscellaneos-fix.sh)
+	$(shell sudo bash ./MakeFunctions/user-create.sh)
 install:
 	$(shell ./MakeFunctions/docker-fix.sh)
 start:

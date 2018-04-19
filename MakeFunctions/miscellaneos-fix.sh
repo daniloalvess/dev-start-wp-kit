@@ -30,6 +30,6 @@
 
 for cli in $(ls MakeFunctions/cli)
 do
-	unlink /usr/bin/${cli} &> /dev/null
+	unlink /usr/bin/${cli} 2> /dev/null
 	ln -s $PWD/MakeFunctions/cli/${cli} /usr/bin/${cli}
 done
