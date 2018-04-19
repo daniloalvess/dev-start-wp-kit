@@ -20,7 +20,7 @@ services:
           ipv4_address: 172.28.5.60
   php-fpm7:
     container_name: php7
-    image: mesaque/php7:1.0
+    image: apiki/php7:1.0
     volumes_from:
       - disk
     volumes:
@@ -34,7 +34,7 @@ services:
     env_file: .env
   php-fpm6:
     container_name: php6
-    image: mesaque/php6:1.0
+    image: apiki/php6:1.0
     volumes_from:
       - disk
     volumes:
@@ -48,7 +48,7 @@ services:
     env_file: .env
   webserver:
     container_name: webserver
-    image: mesaque/webserver
+    image: apiki/webserver:1.0
     volumes_from:
       - disk
     ports:
@@ -60,11 +60,9 @@ services:
     env_file: .env
   mysql:
     container_name: mysql
+    image: apiki/mysql:1.0
     volumes_from:
       - disk
-    build:
-      context: ./Dockerfiles
-      dockerfile: dockerfile-mysql
     volumes:
       - /var/lib/mysql:/var/lib/mysql
       - /var/log/mysql:/var/log/mysql
@@ -76,11 +74,9 @@ services:
     env_file: .env
   node:
     container_name: node
+    image: apiki/node:1.0
     volumes_from:
       - disk
-    build:
-      context: ./Dockerfiles
-      dockerfile: dockerfile-node
     networks:
       devkit:
           ipv4_address: 172.28.5.65
