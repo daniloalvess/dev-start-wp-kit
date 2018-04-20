@@ -23,7 +23,7 @@ yarn () {
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
      --volume /etc/group:/etc/group \
-     devstartwpkit_node:latest \
+     apiki/node:1.0 \
      bash \
      -c "cd $PWD && yarn $argv"
 }
@@ -37,7 +37,7 @@ npm () {
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
      --volume /etc/group:/etc/group \
-     devstartwpkit_node:latest \
+     apiki/node:1.0 \
      bash \
      -c "cd $PWD && npm $argv"
 }
