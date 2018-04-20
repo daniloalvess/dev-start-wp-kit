@@ -74,7 +74,7 @@ services:
     env_file: .env
   node:
     container_name: node
-    image: apiki/node:1.0
+    image: apiki/node:1.1
     volumes_from:
       - disk
     networks:
