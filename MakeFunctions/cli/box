@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker run  -i  --env PWD=$PWD --user $(id -u):$(id -g) --volume "$PWD":"$PWD" -w $PWD apiki/box:1.0 $@ 
