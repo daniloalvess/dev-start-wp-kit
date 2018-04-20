@@ -1,9 +1,3 @@
 #!/bin/bash
 
-docker exec \
--it \
---user $(id -u):$(id -g) \
---env PWD=$PWD \
-php7 \
-bash \
--c "cd $PWD && composer $@"
+docker exec -it --user $(id -u):$(id -g) --env PWD=$PWD -w $PWD php7 composer $@
