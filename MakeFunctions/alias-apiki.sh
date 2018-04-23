@@ -23,9 +23,10 @@ yarn () {
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
      --volume /etc/group:/etc/group \
+     -w $PWD \
      apiki/node:1.1 \
      bash \
-     -c "cd $PWD && yarn $argv"
+     -c "yarn $argv"
 }
 
 npm () {
@@ -37,7 +38,8 @@ npm () {
      --volumes-from disk \
      --volume /etc/passwd:/etc/passwd \
      --volume /etc/group:/etc/group \
+     -w $PWD \
      apiki/node:1.1 \
      bash \
-     -c "cd $PWD && npm $argv"
+     -c "npm $argv"
 }

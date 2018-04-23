@@ -48,9 +48,11 @@ services:
     env_file: .env
   webserver:
     container_name: webserver
-    image: apiki/webserver:1.0
     volumes_from:
       - disk
+    build:
+      context: ./Dockerfiles
+      dockerfile: dockerfile-nginx-module-pagespeed
     ports:
       - "80:80"
       - "443:443"
