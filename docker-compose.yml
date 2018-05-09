@@ -1,9 +1,9 @@
-version: "2"
+version: "3.6"
 services:
   disk:
     container_name: disk
     image: debian:jessie
-    volumes:
+    volumes: &sharedfolders
       - /etc/nginx:/etc/nginx
       - /etc/nginx:/usr/local/openresty/nginx/conf
       - /var/log/nginx:/var/log/nginx
@@ -14,18 +14,18 @@ services:
       - /var/run2:/var/run
       - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
       - /var/www:/var/www
+      - /var/lib/mysql:/var/lib/mysql
+      - /var/log/mysql:/var/log/mysql
       - ${HOME}:${HOME}
+      - /etc/passwd:/etc/passwd
+      - /etc/group:/etc/group
     networks:
       devkit:
           ipv4_address: 172.28.5.60
   php-fpm7:
     container_name: php7
     image: apiki/php7:1.0
-    volumes_from:
-      - disk
-    volumes:
-      - /etc/passwd:/etc/passwd
-      - /etc/group:/etc/group
+    volumes: *sharedfolders
     networks:
       devkit:
           ipv4_address: 172.28.5.63
@@ -35,11 +35,7 @@ services:
   php-fpm6:
     container_name: php6
     image: apiki/php6:1.0
-    volumes_from:
-      - disk
-    volumes:
-      - /etc/passwd:/etc/passwd
-      - /etc/group:/etc/group
+    volumes: *sharedfolders
     networks:
       devkit:
           ipv4_address: 172.28.5.62
@@ -48,8 +44,7 @@ services:
     env_file: .env
   webserver:
     container_name: webserver
-    volumes_from:
-      - disk
+    volumes: *sharedfolders
     build:
       context: ./Dockerfiles
       dockerfile: dockerfile-nginx-module-pagespeed
@@ -63,9 +58,8 @@ services:
   mysql:
     container_name: mysql
     image: apiki/mysql:1.0
-    volumes_from:
-      - disk
     volumes:
+      - /var/run2:/var/run
       - /var/lib/mysql:/var/lib/mysql
       - /var/log/mysql:/var/log/mysql
     environment:
@@ -77,14 +71,14 @@ services:
   node:
     container_name: node
     image: apiki/node:1.1
-    volumes_from:
-      - disk
+    volumes: *sharedfolders
     networks:
       devkit:
           ipv4_address: 172.28.5.65
     env_file: .env
 networks:
   devkit:
+    name: devkit0
     driver: bridge
     driver_opts:
       com.docker.network.enable_ipv6: "false"

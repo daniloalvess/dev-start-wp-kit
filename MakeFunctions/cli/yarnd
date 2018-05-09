@@ -10,6 +10,7 @@ docker run \
  --volume /etc/group:/etc/group \
  -w $PWD \
  --network="devkit0" \
+ -p 3000:3000 \
  apiki/node:1.1 \
  bash \
  -c "yarn $@"
