@@ -1,3 +1,11 @@
 #!/bin/bash
 
-docker exec --user $(id -u):$(id -g) --workdir $PWD  php7 /usr/local/bin/php $@
+docker run \
+    --rm \
+    -i \
+    --network=host \
+    -v "$HOME":"$HOME":ro \
+    -u $(id -u) \
+    -w "$PWD" \
+    apiki/php7:1.0 \
+    php "$@"
