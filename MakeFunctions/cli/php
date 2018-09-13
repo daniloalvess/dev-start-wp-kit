@@ -7,5 +7,5 @@ docker run \
     -v "$HOME":"$HOME":ro \
     -u $(id -u) \
     -w "$PWD" \
-    apiki/php7:1.0 \
+    apiki/php7:1.1 \
     php "$@"
