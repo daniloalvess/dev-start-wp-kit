@@ -7,12 +7,12 @@ services:
       - /etc/nginx:/etc/nginx
       - /etc/nginx:/usr/local/openresty/nginx/conf
       - /var/log/nginx:/var/log/nginx
-      - /var/log/letsencrypt:/var/log/letsencrypt 
+      - /var/log/letsencrypt:/var/log/letsencrypt
       - /var/log/php-fpm:/var/log/php-fpm
       - /var/log/nginx:/usr/local/openresty/nginx/logs
       - /etc/letsencrypt:/etc/letsencrypt
       - /var/run2:/var/run
-      - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed 
+      - /var/run2/nginx-cache/ngx_pagespeed:/var/cache/ngx_pagespeed
       - /var/www:/var/www
       - /var/lib/mysql:/var/lib/mysql
       - /var/log/mysql:/var/log/mysql
@@ -31,6 +31,7 @@ services:
           ipv4_address: 172.28.5.63
     extra_hosts:
       - "db:172.28.5.64"
+      - "amb.gateway:172.28.5.61"
     env_file: .env
   php-fpm6:
     container_name: php6
@@ -67,14 +68,6 @@ services:
     networks:
       devkit:
           ipv4_address: 172.28.5.64
-    env_file: .env
-  node:
-    container_name: node
-    image: apiki/node:1.1
-    volumes: *sharedfolders
-    networks:
-      devkit:
-          ipv4_address: 172.28.5.65
     env_file: .env
 networks:
   devkit:
